@@ -89,54 +89,94 @@ const menu = document.querySelector(".menu");
 
 $(document).ready(function(){
 	// teatimonial-slider
-	if ($('.testimonial-video-slider').length > 0) {		
-		$('.testimonial-video-slider').slick({
-			dots: true,
-			infinite: false,
+	if ($('.banner-slider').length > 0) {		
+		$('.banner-slider').slick({
+			// autoplay: true,
+  			// autoplaySpeed: 2000,
+			dots: false,
+			infinite: true,
 			arrows:false,
+			speed: 700,
+			slidesToShow: 1,
+			slidesToScroll: 1			
+		});	  
+	}
+	// review-slider
+	if ($('.category-slier').length > 0) {		
+		$('.category-slier').slick({
+			dots: false,
+			infinite: false,
+			arrows:true,
 			speed: 300,
-			slidesToShow: 3,
+			slidesToShow: 6,
 			slidesToScroll: 1,
+			prevArrow:"<div class='slick-prev'><span class='icon-left-open-big'></span></div>",
+			nextArrow:"<div class='slick-next'><span class='icon-right-open-big'></span></div>",
 			responsive: [
 				{
-				breakpoint: 767,
+					breakpoint: 1100,
 					settings: {
-						slidesToShow: 2,
+						slidesToShow: 5,
 					}
 				},
 				{
-					breakpoint: 575,
+					breakpoint: 991,
 					settings: {
-						slidesToShow: 1,
+						slidesToShow: 4,
+					}
+				},
+				{
+					breakpoint: 767,
+					settings: {
+						rows: 3,
+						slidesToShow: 2,
 					}
 				}
 			]
 			});	  
 	}
-	// review-slider
-	if ($('.review-slider').length > 0) {		
-		$('.review-slider').slick({
-			dots: true,
+	if ($('.product-slider-full').length > 0) {		
+		$('.product-slider-full').slick({
+			dots: false,
 			infinite: false,
 			arrows:false,
 			speed: 300,
-			slidesToShow: 3,
-			slidesToScroll: 1,
+			slidesToShow: 4,
+			slidesToScroll: 1,			
 			responsive: [
 				{
-				breakpoint: 767,
+					breakpoint: 991,
+					settings: {
+						slidesToShow: 3,
+						dots: true
+					}
+				},
+				{
+					breakpoint: 767,
 					settings: {
 						slidesToShow: 2,
+						dots: true
 					}
 				},
 				{
 					breakpoint: 575,
 					settings: {
 						slidesToShow: 1,
+						dots: true
 					}
 				}
 			]
 			});	  
+	}
+	
+	if ($('.product-tabing').length > 0) {		
+		$('.tab-menu li a').on('click', function(){
+			var target = $(this).attr('data-rel');
+			$('.tab-menu li a').removeClass('active');
+			$(this).addClass('active');
+			$("#"+target).fadeIn('slow').siblings(".tab-box").hide();
+			return false;
+		});
 	}
 
 	// address-slider
